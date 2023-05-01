@@ -1,5 +1,6 @@
 import { ResultSetHeader } from 'mysql2/promise';
 import connection from './connection';
+import { Product } from '../types/product';
 
 const postProductsModel = async (name: string, amount: string) => {
   const [{ insertId: id }] = await connection.execute<ResultSetHeader>(
@@ -10,4 +11,9 @@ const postProductsModel = async (name: string, amount: string) => {
   return result;
 };
 
-export default { postProductsModel };
+const getAllProductsModel = async (): Promise<Product[]> => {
+  const [result] = await connection.execute('SELECT * FROM Trybesmith.products');
+  return result as Product[];
+};
+
+export default { postProductsModel, getAllProductsModel };

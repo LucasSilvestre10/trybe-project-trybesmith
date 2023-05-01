@@ -6,4 +6,8 @@ const postProductsService = async (name: string, amount: string): Promise<Produc
   return result;
 };
 
-export default { postProductsService };
+const getAllProducts = async (): Promise<Product[]> => {
+  const result = await productsModel.getAllProductsModel();
+  return result;
+};
+export default { postProductsService, getAllProducts };

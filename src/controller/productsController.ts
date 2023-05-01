@@ -7,4 +7,8 @@ const postProducts = async (request: Request, response: Response): Promise<Respo
   return response.status(201).json(result);
 }; 
 
-export default { postProducts }; 
+const getAllProducts = async (request: Request, response: Response): Promise<Response> => { 
+  const result = await productsService.getAllProducts();
+  return response.status(200).json(result);
+};
+export default { postProducts, getAllProducts };  
